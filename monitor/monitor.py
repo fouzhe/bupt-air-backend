@@ -96,13 +96,13 @@ class monitor:
                         during=time.time()-self.time
                         self.cur_temp=min(1.5*self.target_temp*(1-math.exp(-(x+during)/a))/(1+math.exp(-(x+during)/a)),self.target_temp)
 
-                        print(self.cur_temp)
+                        #print(self.cur_temp)
 
                     elif(self.target_temp<self.cur_temp):
                         x=a*math.log((3*self.out_temp-self.cur_temp-5+self.target_temp)/(self.cur_temp+5-self.target_temp))
                         during = time.time() - self.time
                         self.cur_temp=max(self.target_temp,1.5*self.out_temp*(math.exp(-(x+during)/a)-1)/(math.exp(-(x+during)/a)+1)+self.target_temp-5+1.5*self.out_temp)
-                        print(self.cur_temp)
+                        #print(self.cur_temp)
 
                 elif(self.cur_temp!=self.out_temp):
                     a=10
@@ -120,7 +120,7 @@ class monitor:
                         self.cur_temp = max(self.out_temp,
                                             1.5 * self.out_temp * (math.exp(-(x + during) / a) - 1) / (math.exp(
                                                 -(x + during) / a) + 1) + self.out_temp - 5 + 1.5 * self.out_temp)
-                        print(self.cur_temp)
+                        #print(self.cur_temp)
                     if(self.switch):
                         if(abs(self.cur_temp-self.target_temp)>1 and time.time()-self.last_req>1):
                             self.last_req=time.time()
